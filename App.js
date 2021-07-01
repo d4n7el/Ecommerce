@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { Provider as PaperProvider } from "react-native-paper";
+import Auth from "./src/screens/Auth";
+import { LogInProvider } from "./src/context/login";
+import AppNavigation from "./src/navigation/AppNavigation";
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <LogInProvider>
+      <PaperProvider>
+        <Auth />
+        <AppNavigation />
+      </PaperProvider>
+    </LogInProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
