@@ -46,7 +46,6 @@ const UpdateProfile = () => {
           position: Toast.positions.CENTER,
         }
       );
-      //ToastCustom({ response });
     } else {
       navigation.goBack();
     }
@@ -108,7 +107,7 @@ const UpdateProfile = () => {
           style={layoutStyle.buttonSuccess}
           loading={loading}
         >
-          Actualizar
+          Update
         </Button>
       </View>
     </ScrollView>

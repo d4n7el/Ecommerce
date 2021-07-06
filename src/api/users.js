@@ -1,4 +1,4 @@
-import { postRequestApi, getRequest, putRequest } from './base';
+import { postRequestApi, getRequestApi, putRequestApi } from './base';
 
 export const registerApi = async (formData) => {
   const response = await postRequestApi('/auth/local/register', formData);
@@ -11,12 +11,12 @@ export const loginApi = async (formData) => {
 };
 
 export const meApi = async (token) => {
-  const response = await getRequest('/users/me', { token });
+  const response = await getRequestApi('/users/me', { token });
   return response;
 };
 
 export const updateMeApi = async (token, id, data) => {
   console.log(token, id, data);
-  const response = await putRequest(`/users/${id}`, data, { token });
+  const response = await putRequestApi(`/users/${id}`, data, { token });
   return response;
 };

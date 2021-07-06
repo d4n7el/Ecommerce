@@ -5,6 +5,7 @@ import ChangePassword from '../screens/account/ChangePassword';
 import ChangeName from '../screens/account/UpdateProfile';
 import colors from '../styles/colors';
 import Address from '../screens/account/Address';
+import AddAddress from '../screens/account/AddAddress';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,11 @@ const AccountStack = () => {
         name="address"
         component={Address}
         options={{ title: 'Administrar direcciones' }}
+      />
+      <Stack.Screen
+        name="addAddress"
+        component={AddAddress}
+        options={{ title: 'Crear nueva direccion' }}
       />
     </Stack.Navigator>
   );

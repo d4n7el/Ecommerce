@@ -16,6 +16,10 @@ const layoutStyle = StyleSheet.create({
   container: {
     padding: 20,
   },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   input: {
     marginBottom: 20,
     backgroundColor: 'transparent',
@@ -35,6 +39,7 @@ const layoutStyle = StyleSheet.create({
   },
   buttonSuccess: {
     backgroundColor: colors.third,
+    color: colors.opaque,
   },
   buttonWarning: {
     backgroundColor: colors.fourth,
@@ -46,6 +51,10 @@ const layoutStyle = StyleSheet.create({
   colorThird: { color: colors.third },
   padding40: {
     padding: 40,
+  },
+  title: {
+    color: colors.fourth,
+    fontSize: 16,
   },
 });
 

@@ -1,16 +1,18 @@
-import React, { useMemo, useState, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import jwtDecode from "jwt-decode";
+import React, { useMemo, useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwtDecode from 'jwt-decode';
 
 const logInContext = React.createContext();
 
 export const LogInProvider = (props) => {
-  const TOKEN = "token";
+  const TOKEN = 'token';
   const [auth, setAuth] = useState(undefined);
 
   useEffect(() => {
     (async () => {
       const token = await AsyncStorage.getItem(TOKEN);
+      console.log('[[[[[[[[[[[[[[[[[[[[[[[[[[`');
+      console.log(jwtDecode(token).id);
       if (token) {
         setAuth({ token: token, id: jwtDecode(token).id });
       }
@@ -18,7 +20,7 @@ export const LogInProvider = (props) => {
   }, []);
 
   const logIn = async (user) => {
-    setAuth({ token: user.jwt, id: user.user_id });
+    setAuth({ token: user.jwt, id: user.user_id || jwtDecode(user.jwt).id });
     await AsyncStorage.setItem(TOKEN, user.jwt);
   };
 

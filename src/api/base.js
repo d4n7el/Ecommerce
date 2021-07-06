@@ -4,7 +4,11 @@ const BASE_URL_API = 'http://192.168.20.29:1337';
 
 export const postRequestApi = async (path, data, options, skipRetry) => {
   try {
-    const response = await axios.post(`${BASE_URL_API}${path}`, data, {});
+    const response = await axios.post(
+      `${BASE_URL_API}${path}`,
+      data,
+      await getHeaders(options || {})
+    );
     return response;
   } catch (error) {
     return await handleAPIError(error, options, skipRetry, () => {
@@ -13,7 +17,7 @@ export const postRequestApi = async (path, data, options, skipRetry) => {
   }
 };
 
-export const getRequest = async (path, options, skipRetry) => {
+export const getRequestApi = async (path, options, skipRetry) => {
   try {
     return await axios.get(
       `${BASE_URL_API}${path}`,
@@ -26,7 +30,7 @@ export const getRequest = async (path, options, skipRetry) => {
   }
 };
 
-export const putRequest = async (path, data, options, skipRetry) => {
+export const putRequestApi = async (path, data, options, skipRetry) => {
   try {
     return await axios.put(
       `${BASE_URL_API}${path}`,
