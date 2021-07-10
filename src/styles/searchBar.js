@@ -1,19 +1,24 @@
-import { StyleSheet } from 'react-native';
-import colors from './colors';
+import { StyleSheet } from "react-native";
+import colors from "./colors";
 
 const searchBarStyle = StyleSheet.create({
   searchContainer: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.applicationBackground,
     paddingHorizontal: 30,
     paddingVertical: 10,
     zIndex: 1,
   },
   statusBarCustom: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.applicationBackground,
   },
   safeAreaView: {
     flex: 0,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.applicationBackground,
+  },
+  search: {
+    borderRadius: 20,
+    height: 34,
+    shadowColor: "transparent",
   },
 });
 

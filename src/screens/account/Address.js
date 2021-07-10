@@ -1,18 +1,18 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from "react";
 import {
   View,
   Text,
   ScrollView,
   TouchableWithoutFeedback,
   ActivityIndicator,
-} from 'react-native';
-import { layoutStyle, addressStyle } from '../../styles';
-import { IconButton } from 'react-native-paper';
-import { addressesApi } from '../../api/address';
-import { UseLogin } from '../../context/login';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import { Button } from 'react-native-paper';
-import AddressList from '../../components/address/AddressList';
+} from "react-native";
+import { layoutStyle, addressStyle } from "../../styles";
+import { IconButton } from "react-native-paper";
+import { addressesApi } from "../../api/address";
+import { UseLogin } from "../../context/login";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { Button } from "react-native-paper";
+import AddressList from "../../components/address/AddressList";
 
 const Address = () => {
   const [listAddress, setListAddress] = useState(null);
@@ -23,9 +23,7 @@ const Address = () => {
   } = UseLogin();
 
   const getAddresses = async () => {
-    console.log({ id });
     const response = await addressesApi(token, id);
-    console.log(response);
     if (response && response.status >= 200 && response.status <= 204) {
       setListAddress(response.data ? response.data : []);
     }
@@ -40,18 +38,20 @@ const Address = () => {
   );
 
   return (
-    <ScrollView style={layoutStyle.container}>
-      <TouchableWithoutFeedback
-        onPress={() => {
-          navigation.navigate('addAddress');
-        }}
-      >
-        <View style={addressStyle.addAddress}>
-          <Text style={addressStyle.addressTex}>Añadir Direcciòn</Text>
-          <IconButton icon="arrow-right" color="#000" size={19} />
-        </View>
-      </TouchableWithoutFeedback>
-      <View style={[layoutStyle.padding40, layoutStyle.center]}>
+    <ScrollView>
+      <View style={layoutStyle.padding20}>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            navigation.navigate("addAddress");
+          }}
+        >
+          <View style={[addressStyle.addAddress]}>
+            <Text style={addressStyle.addressTex}>Añadir Direcciòn</Text>
+            <IconButton icon="arrow-right" color="#000" size={19} />
+          </View>
+        </TouchableWithoutFeedback>
+      </View>
+      <View>
         {!listAddress ? (
           <ActivityIndicator />
         ) : listAddress.length === 0 ? (
@@ -59,15 +59,15 @@ const Address = () => {
             mode="outlined"
             icon="plus"
             style={layoutStyle.buttonSuccess}
-            color={'white'}
+            color={"white"}
             onPress={() => {
-              navigation.navigate('addAddress');
+              navigation.navigate("addAddress");
             }}
           >
             Añadir Primer Direcciòn
           </Button>
         ) : (
-          <AddressList />
+          <AddressList addresses={listAddress} />
         )}
       </View>
     </ScrollView>

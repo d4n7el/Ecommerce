@@ -1,6 +1,5 @@
-import axios from 'axios';
-
-const BASE_URL_API = 'http://192.168.20.29:1337';
+import axios from "axios";
+import { BASE_URL_API } from "../utils/const";
 
 export const postRequestApi = async (path, data, options, skipRetry) => {
   try {
@@ -12,7 +11,7 @@ export const postRequestApi = async (path, data, options, skipRetry) => {
     return response;
   } catch (error) {
     return await handleAPIError(error, options, skipRetry, () => {
-      return getRequest(path, options, true);
+      return postRequestApi(path, options, true);
     });
   }
 };
@@ -26,6 +25,19 @@ export const getRequestApi = async (path, options, skipRetry) => {
   } catch (error) {
     return await handleAPIError(error, options, skipRetry, () => {
       return getRequest(path, options, true);
+    });
+  }
+};
+
+export const deleteRequestApi = async (path, options, skipRetry) => {
+  try {
+    return await axios.delete(
+      `${BASE_URL_API}${path}`,
+      await getHeaders(options || {})
+    );
+  } catch (error) {
+    return await handleAPIError(error, options, skipRetry, () => {
+      return deleteRequestApi(path, options, true);
     });
   }
 };
