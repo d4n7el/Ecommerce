@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import { layoutStyle, productStyle } from "../../styles";
 import StatusBarCustom from "../../components/statusBar/Index";
 import Search from "../../components/search/index";
@@ -40,7 +40,6 @@ const Favorites = () => {
     const FavForRemove = favorites.filter(
       (fav) => fav.product._id === idProduct
     );
-    console.log({ FavForRemove });
     const response = await deleteFavoriteApi(FavForRemove[0]._id, token);
     const { process } = await validateResponse(response);
     if (process) {
