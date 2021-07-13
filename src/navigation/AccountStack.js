@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Account from "../screens/account/Index";
+import Account from "../screens/account";
 import ChangePassword from "../screens/account/ChangePassword";
 import ChangeName from "../screens/account/UpdateProfile";
 import colors from "../styles/colors";

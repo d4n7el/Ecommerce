@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import colors from "../styles/colors";
 import ViewProduct from "../screens/products/ViewProduct";
 import Home from "../screens/Home";
+import SearchProducts from "../screens/products/SearchProducts";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,11 @@ const ProductStack = () => {
       <Stack.Screen
         name="product"
         component={ViewProduct}
+        options={{ title: "Product", headerShown: false }}
+      />
+      <Stack.Screen
+        name="search"
+        component={SearchProducts}
         options={{ title: "Product", headerShown: false }}
       />
     </Stack.Navigator>

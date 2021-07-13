@@ -32,6 +32,11 @@ const layoutStyle = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "flex-start",
   },
+  centerInLineBetWeenBase: {
+    flexDirection: "row",
+    alignItems: "baseline",
+    justifyContent: "space-between",
+  },
   centerInLine: {
     flex: 1,
     flexDirection: "row",
@@ -107,6 +112,9 @@ const layoutStyle = StyleSheet.create({
     color: colors.fourth,
     fontSize: 16,
     marginBottom: 10,
+  },
+  hidden: {
+    display: "none",
   },
 });
 

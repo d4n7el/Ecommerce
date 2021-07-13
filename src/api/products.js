@@ -22,3 +22,8 @@ export const productLastsApi = async (limit = 10) => {
   );
   return response;
 };
+
+export const productsSearchApi = async (search) => {
+  const response = await getRequestApi(`/products?_q=${search}`, {});
+  return response;
+};

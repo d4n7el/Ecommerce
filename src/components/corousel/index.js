@@ -74,7 +74,7 @@ const Carousel = ({ dinamicImages }) => {
                   },
                   borderRadius: 18,
                   padding: 12,
-                  backgroundColor: "white",
+                  backgroundColor: colors.applicationBackground,
                 }}
               >
                 <View
