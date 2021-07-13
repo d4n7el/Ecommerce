@@ -1,12 +1,73 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { layoutStyle } from '../../styles';
+import React, { useCallback, useState } from "react";
+import { View, Text, ScrollView } from "react-native";
+import { layoutStyle, productStyle } from "../../styles";
+import StatusBarCustom from "../../components/statusBar/Index";
+import Search from "../../components/search/index";
+import { FavoritesMeApi } from "../../api/favorites";
+import { useFocusEffect } from "@react-navigation/native";
+import { UseLogin } from "../../context/login";
+import ViewProduct from "../../components/products/ViewProduct";
+import { deleteFavoriteApi } from "../../api/favorites";
+import { validateResponse } from "../../utils/function";
 
 const Favorites = () => {
+  const [favorites, setFavorites] = useState(null);
+  const {
+    auth: { token, id },
+  } = UseLogin();
+
+  useFocusEffect(
+    useCallback(() => {
+      (async () => {
+        getFavorites();
+      })();
+    }, [])
+  );
+
+  const getFavorites = async () => {
+    const response = await FavoritesMeApi(token, id);
+    if (
+      response &&
+      response.status &&
+      response.status >= 200 &&
+      response.status <= 204
+    ) {
+      setFavorites(response.data);
+    }
+  };
+
+  const deleteFavorites = async (idProduct, like) => {
+    const FavForRemove = favorites.filter(
+      (fav) => fav.product._id === idProduct
+    );
+    console.log({ FavForRemove });
+    const response = await deleteFavoriteApi(FavForRemove[0]._id, token);
+    const { process } = await validateResponse(response);
+    if (process) {
+      getFavorites();
+    }
+  };
+
   return (
-    <View style={layoutStyle.containerPrimary}>
-      <Text>estamos en Favorites</Text>
-    </View>
+    <>
+      <StatusBarCustom />
+      <Search />
+      <ScrollView style={layoutStyle.padding5}>
+        <View style={[productStyle.container]}>
+          {favorites &&
+            favorites.map((element) => {
+              return (
+                <ViewProduct
+                  key={element._id}
+                  element={element.product}
+                  isFav
+                  updateFavorite={deleteFavorites}
+                />
+              );
+            })}
+        </View>
+      </ScrollView>
+    </>
   );
 };
 

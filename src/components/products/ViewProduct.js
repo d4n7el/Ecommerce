@@ -1,15 +1,11 @@
-import React, { useCallback, useState } from "react";
-import { useFocusEffect } from "@react-navigation/native";
+import React from "react";
 import {
   View,
   Text,
-  Image,
   TouchableWithoutFeedback,
   ImageBackground,
-  StyleSheet,
 } from "react-native";
-import { productLastsApi } from "../../api/products";
-import { Card, Button } from "react-native-paper";
+import { Card } from "react-native-paper";
 import { layoutStyle, productStyle } from "../../styles";
 import { BASE_URL_API } from "../../utils/const";
 import { Avatar } from "react-native-paper";
@@ -18,7 +14,7 @@ import ViewColors from "./ViewColors";
 import { useNavigation } from "@react-navigation/native";
 import { backgroundImage } from "../../styles";
 
-const ViewProduct = ({ element }) => {
+const ViewProduct = ({ element, isFav, updateFavorite }) => {
   const navigation = useNavigation();
   return (
     <Card key={element._id} style={[productStyle.containerProduct]}>
@@ -50,7 +46,10 @@ const ViewProduct = ({ element }) => {
       <View style={[productStyle.infoFooter]}>
         <TouchableWithoutFeedback
           onPress={() => {
-            console.log("like");
+            if (updateFavorite) {
+              updateFavorite(element._id, !isFav);
+              console.log(isFav ? "disLike" : "like");
+            }
           }}
           style={layoutStyle.bgOrange}
         >
@@ -58,7 +57,7 @@ const ViewProduct = ({ element }) => {
             style={layoutStyle.iconLike}
             size={35}
             icon="cards-heart"
-            color={colors.opaque}
+            color={isFav ? colors.secondary : colors.opaque}
           />
         </TouchableWithoutFeedback>
         <Text style={productStyle.infoPrice}>$ {element.price}</Text>

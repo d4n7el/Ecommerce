@@ -1,31 +1,25 @@
 import React, { useCallback, useState } from "react";
 import { useFocusEffect } from "@react-navigation/native";
-import {
-  View,
-  Text,
-  Image,
-  TouchableWithoutFeedback,
-  ImageBackground,
-  StyleSheet,
-} from "react-native";
+import { View } from "react-native";
 import { productLastsApi } from "../../api/products";
-import { Card, Button } from "react-native-paper";
-import { layoutStyle, productStyle } from "../../styles";
-import { BASE_URL_API } from "../../utils/const";
-import { Avatar } from "react-native-paper";
-import colors from "../../styles/colors";
-import ViewColors from "./ViewColors";
-import { useNavigation } from "@react-navigation/native";
-import { backgroundImage } from "../../styles";
+import { FavoritesIdsMeApi } from "../../api/favorites";
+import { productStyle } from "../../styles";
 import ViewProduct from "./ViewProduct";
+import { UseLogin } from "../../context/login";
+import { newFavoriteApi, deleteFavoriteApi } from "../../api/favorites";
 
 const NewProducts = () => {
   const [products, setProducts] = useState(null);
+  const [favorites, setFavorites] = useState(null);
+  const {
+    auth: { token, id },
+  } = UseLogin();
 
   useFocusEffect(
     useCallback(() => {
       (async () => {
         getProductsLast();
+        getFavorites();
       })();
     }, [])
   );
@@ -42,11 +36,48 @@ const NewProducts = () => {
     }
   };
 
+  const updateFavorite = async (idProduct, like) => {
+    const response = like ? AddFavorite(idProduct) : deleteFavorite(idProduct);
+  };
+
+  const AddFavorite = async (idProduct) => {
+    const response = await newFavoriteApi(
+      { product: idProduct, user: id },
+      token
+    );
+    setFavorites([...favorites, { idProduct, idFavorite: response.data._id }]);
+    return response;
+  };
+
+  const deleteFavorite = async (idProduct) => {
+    const FavForDelete = favorites.filter((x) => x.idProduct === idProduct)[0]
+      .idFavorite;
+    const response = await deleteFavoriteApi(FavForDelete, token);
+    setFavorites(favorites.filter((x) => x.idProduct !== idProduct));
+    return response;
+  };
+
+  const getFavorites = async () => {
+    const response = await FavoritesIdsMeApi(token, id);
+    setFavorites(response || []);
+  };
+
   return (
     <View style={[productStyle.container]}>
       {products &&
+        favorites &&
         products.map((element) => {
-          return <ViewProduct key={element._id} element={element} />;
+          return (
+            <ViewProduct
+              key={element._id}
+              element={element}
+              isFav={
+                favorites.filter((x) => x.idProduct === element._id).length ===
+                1
+              }
+              updateFavorite={updateFavorite}
+            />
+          );
         })}
     </View>
   );
