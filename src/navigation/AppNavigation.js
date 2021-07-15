@@ -8,6 +8,7 @@ import AwesomeIcon from "react-native-vector-icons/FontAwesome";
 import AccountStack from "./AccountStack";
 import ProductStack from "./ProductStack";
 import Favorites from "../screens/account/Favorites";
+import { HeaderTitle } from "@react-navigation/stack";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -40,7 +41,7 @@ export const AppNavigation = () => {
           <Tab.Screen
             name="account"
             component={AccountStack}
-            options={{ title: "Cuenta" }}
+            options={{ title: "Cuenta", headerShown: false }}
           ></Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>

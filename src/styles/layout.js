@@ -22,6 +22,12 @@ const layoutStyle = StyleSheet.create({
     flexWrap: "wrap",
     alignItems: "flex-start",
   },
+  containerRow: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "baseline",
+    justifyContent: "flex-start",
+  },
   center: {
     justifyContent: "center",
     alignItems: "center",

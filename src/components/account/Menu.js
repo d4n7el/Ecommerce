@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { List } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
-import { UseLogin } from '../../context/login';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { List } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
+import { UseLogin } from "../../context/login";
 
 const Menu = () => {
   const navigation = useNavigation();
@@ -16,7 +16,7 @@ const Menu = () => {
           description="Cambia la informaciòn de tu usuario"
           left={(props) => <List.Icon {...props} icon="face" />}
           onPress={() => {
-            navigation.navigate('update_info');
+            navigation.navigate("update_info");
           }}
         ></List.Item>
         <List.Item
@@ -24,7 +24,7 @@ const Menu = () => {
           description="Cambia la contraseña de tu cuenta"
           left={(props) => <List.Icon {...props} icon="key" />}
           onPress={() => {
-            navigation.navigate('change_password');
+            navigation.navigate("change_password");
           }}
         ></List.Item>
         <List.Item
@@ -32,7 +32,15 @@ const Menu = () => {
           description="Administra tu listado de direcciones"
           left={(props) => <List.Icon {...props} icon="map" />}
           onPress={() => {
-            navigation.navigate('address');
+            navigation.navigate("address");
+          }}
+        ></List.Item>
+        <List.Item
+          title="Cart"
+          description="View to Cart"
+          left={(props) => <List.Icon {...props} icon="cart-outline" />}
+          onPress={() => {
+            navigation.navigate("cart");
           }}
         ></List.Item>
       </List.Section>
@@ -42,16 +50,14 @@ const Menu = () => {
           title="Pedidos"
           description="Administra tu lista de pedidos"
           left={(props) => <List.Icon {...props} icon="clipboard-list" />}
-          onPress={() => {
-            console.log('Cierra la sesion actual');
-          }}
+          onPress={() => {}}
         ></List.Item>
         <List.Item
           title="Favoritos"
           description="Administra tu lista de favoritos"
           left={(props) => <List.Icon {...props} icon="heart" />}
           onPress={() => {
-            navigation.navigate('favorites');
+            navigation.navigate("favorites");
           }}
         ></List.Item>
         <List.Item

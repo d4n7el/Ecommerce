@@ -6,6 +6,7 @@ import ChangeName from "../screens/account/UpdateProfile";
 import colors from "../styles/colors";
 import Address from "../screens/account/Address";
 import AddAddress from "../screens/account/AddAddress";
+import Cart from "../screens/account/Cart";
 
 const Stack = createStackNavigator();
 
@@ -42,6 +43,11 @@ const AccountStack = () => {
         name="addAddress"
         component={AddAddress}
         options={{ title: "Manage addresses" }}
+      />
+      <Stack.Screen
+        name="cart"
+        component={Cart}
+        options={{ title: "Manage cart", headerShown: false }}
       />
     </Stack.Navigator>
   );

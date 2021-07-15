@@ -12,11 +12,11 @@ const Auth = () => {
   return (
     !auth && (
       <View style={layoutStyle.containerPrimary}>
-        <Image source={logo} style={loginStyle.imgLogo} />
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
-          style={layoutStyle.widthAll}
+          style={[layoutStyle.widthAll, layoutStyle.containerPrimary]}
         >
+          <Image source={logo} style={loginStyle.imgLogo} />
           {!showLogin && <RegisterForm setShowLogin={setShowLogin} />}
           {showLogin && <Login setShowLogin={setShowLogin} />}
         </KeyboardAvoidingView>

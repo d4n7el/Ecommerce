@@ -9,7 +9,6 @@ import {
   animatedTransition,
   animateTranssitionReset,
   arrowLeftAnimation,
-  arrowLeftAnimationC0lor,
 } from "./AnimationSearch";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import SearchHistory from "./SearchHistory";
@@ -38,7 +37,7 @@ const Search = () => {
     await updateSearchHistory(
       typeof reUseSearch === "string" ? reUseSearch : search
     );
-    setSearch("");
+
     if (name === "search") {
       navigation.push("search", {
         search: typeof reUseSearch === "string" ? reUseSearch : search,
@@ -48,6 +47,7 @@ const Search = () => {
         search: typeof reUseSearch === "string" ? reUseSearch : search,
       });
     }
+    closeSearch();
   };
 
   return (

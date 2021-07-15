@@ -3,7 +3,7 @@ import colors from "./colors";
 
 const navigationStyle = StyleSheet.create({
   navContainer: {
-    backgroundColor: "red",
+    backgroundColor: "transparent",
   },
   icon: {
     fontSize: 20,

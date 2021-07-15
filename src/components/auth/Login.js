@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
-import { useFormik } from 'formik';
-import Toast from 'react-native-root-toast';
-import { loginApi } from '../../api/users';
-import * as Yup from 'yup';
-import { UseLogin } from '../../context/login';
-import AppNavigation from '../../navigation/AppNavigation';
+import React, { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { TextInput, Button } from "react-native-paper";
+import { useFormik } from "formik";
+import Toast from "react-native-root-toast";
+import { loginApi } from "../../api/users";
+import * as Yup from "yup";
+import { UseLogin } from "../../context/login";
 
-import { layoutStyle, loginStyle } from '../../styles';
-import colors from '../../styles/colors';
-import { color } from 'react-native-reanimated';
+import { layoutStyle, loginStyle } from "../../styles";
+import colors from "../../styles/colors";
 
 const Login = ({ setShowLogin }) => {
   const [loading, setLoading] = useState(false);
@@ -29,7 +27,7 @@ const Login = ({ setShowLogin }) => {
     const response = await loginApi(formData);
     setLoading(false);
     if (response && response.error) {
-      Toast.show('Credenciales incorrectas', {
+      Toast.show("Credenciales incorrectas", {
         position: Toast.positions.CENTER,
       });
     } else if (response && response.data) {
@@ -48,7 +46,7 @@ const Login = ({ setShowLogin }) => {
             value={formik.values.identifier}
             error={formik.errors.identifier}
             onChangeText={(text) => {
-              formik.setFieldValue('identifier', text);
+              formik.setFieldValue("identifier", text);
             }}
           />
 
@@ -60,7 +58,7 @@ const Login = ({ setShowLogin }) => {
             value={formik.values.password}
             error={formik.errors.password}
             onChangeText={(text) => {
-              formik.setFieldValue('password', text);
+              formik.setFieldValue("password", text);
             }}
           />
 
@@ -84,18 +82,6 @@ const Login = ({ setShowLogin }) => {
           </Button>
         </View>
       )}
-      {auth && (
-        <View style={layoutStyle.containerCenter}>
-          <Text
-            onPress={() => {
-              logOut();
-            }}
-          >
-            Cerrar sesión
-          </Text>
-          <AppNavigation />
-        </View>
-      )}
     </View>
   );
 };
@@ -103,8 +89,8 @@ const Login = ({ setShowLogin }) => {
 export default Login;
 
 const initialValues = () => ({
-  identifier: '',
-  password: '',
+  identifier: "",
+  password: "",
 });
 
 const validationSchema = () => ({

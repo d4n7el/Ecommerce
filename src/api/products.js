@@ -27,3 +27,8 @@ export const productsSearchApi = async (search) => {
   const response = await getRequestApi(`/products?_q=${search}`, {});
   return response;
 };
+
+export const productsForIdApi = async (id) => {
+  const response = await getRequestApi(`/products?_id=${id}`, {});
+  return response;
+};

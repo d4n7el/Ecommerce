@@ -13,6 +13,7 @@ import colors from "../../styles/colors";
 import ViewColors from "./ViewColors";
 import { useNavigation } from "@react-navigation/native";
 import { backgroundImage } from "../../styles";
+import ShoppingCart from "../cart";
 
 const ViewProduct = ({ element, isFav, updateFavorite }) => {
   const navigation = useNavigation();
@@ -48,7 +49,6 @@ const ViewProduct = ({ element, isFav, updateFavorite }) => {
           onPress={() => {
             if (updateFavorite) {
               updateFavorite(element._id, !isFav);
-              console.log(isFav ? "disLike" : "like");
             }
           }}
           style={layoutStyle.bgOrange}
@@ -62,19 +62,7 @@ const ViewProduct = ({ element, isFav, updateFavorite }) => {
         </TouchableWithoutFeedback>
         <Text style={productStyle.infoPrice}>$ {element.price}</Text>
 
-        <TouchableWithoutFeedback
-          onPress={() => {
-            console.log("add");
-          }}
-          style={layoutStyle.bgOrange}
-        >
-          <Avatar.Icon
-            style={layoutStyle.iconLike}
-            size={35}
-            icon="cart-plus"
-            color={colors.primary}
-          />
-        </TouchableWithoutFeedback>
+        <ShoppingCart idProduct={element._id} />
       </View>
     </Card>
   );

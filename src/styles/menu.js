@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import colors from './colors';
+import { StyleSheet } from "react-native";
+import colors from "./colors";
 
 const menuStyle = StyleSheet.create({
   conatiner: {
@@ -9,7 +9,7 @@ const menuStyle = StyleSheet.create({
   titleName: {
     color: colors.third,
     fontSize: 19,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   title: {
     fontSize: 15,
