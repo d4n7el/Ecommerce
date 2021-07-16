@@ -27,7 +27,7 @@ const ViewProduct = ({ element, isFav, updateFavorite }) => {
       <View style={[productStyle.containerThumbnail, layoutStyle.widthAll]}>
         <TouchableWithoutFeedback
           onPress={() => {
-            navigation.push("product", element.slug);
+            navigation.navigate("product", element.slug);
           }}
         >
           <ImageBackground

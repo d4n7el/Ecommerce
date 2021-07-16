@@ -18,7 +18,9 @@ export const updateCartStorage = async (idProduct, quantity = 1) => {
   if (idProductExist && idProductExist !== undefined) {
     cart = cart.filter((h) => h.idProduct !== idProduct);
     idProductExist.quantity += quantity;
-    cart.push(idProductExist);
+    if (idProductExist.quantity > 0) {
+      cart.push(idProductExist);
+    }
   } else {
     cart.push({
       idProduct,
@@ -31,7 +33,7 @@ export const updateCartStorage = async (idProduct, quantity = 1) => {
 };
 
 export const deleteCartStorage = async (idProduct) => {
-  let cart = await getCart();
+  let cart = await getCartStorage();
   cart = cart.filter((p) => p.idProduct !== idProduct);
 
   await AsyncStorage.setItem(ITEM_CART_STORAGE, JSON.stringify(cart));

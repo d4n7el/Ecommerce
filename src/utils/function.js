@@ -1,6 +1,6 @@
-export const sortDataForDate = (data = []) => {
+export const sortDataForDate = (data = [], item = "data") => {
   return data.sort(function (a, b) {
-    return new Date(b.date) - new Date(a.date);
+    return new Date(b[item]) - new Date(a[item]);
   });
 };
 

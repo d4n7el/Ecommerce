@@ -57,7 +57,6 @@ export const putRequestApi = async (path, data, options, skipRetry) => {
 };
 
 const getHeaders = async ({ token }) => {
-  // TODO: get token from redux as normal workflow
   if (token) {
     return {
       headers: {

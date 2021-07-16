@@ -1,12 +1,12 @@
 const colors = {
-  primary: "#2B435E",
-  secondary: "#579DEA",
-  third: "#D5802E",
+  primary: "#024959",
+  secondary: "#69AFBF",
+  third: "#96C6D9",
   fourth: "#F24405",
   dark: "#072C33",
-  light: "#CCD9D5",
+  light: "#C9EBF2",
   opaque: "#ACACAC",
-  white: "#F2F2F2",
+  white: "#FAF8F8",
   warning: "#FD4A8C",
   applicationBackground: "#F1F2F6",
 };

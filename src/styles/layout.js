@@ -32,6 +32,9 @@ const layoutStyle = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  alignItemsCenter: {
+    alignItems: "center",
+  },
   centerInLineBetWeen: {
     flex: 1,
     flexDirection: "row",
@@ -70,7 +73,7 @@ const layoutStyle = StyleSheet.create({
     marginTop: 6,
   },
   buttonContained: {
-    backgroundColor: colors.third,
+    backgroundColor: colors.primary,
   },
   buttonSuccess: {
     backgroundColor: colors.third,

@@ -1,8 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ITEM_HISTORY_STORAGE, LIMIT_HISTORY_SEARCH } from "../utils/const";
-import jwtDecode from "jwt-decode";
 import { sortDataForDate } from "../utils/function";
 
 export const getSearchHistory = async () => {
@@ -33,5 +30,3 @@ export const deleteSearchHistory = async (search) => {
 
   await AsyncStorage.setItem(ITEM_HISTORY_STORAGE, JSON.stringify(history));
 };
-
-const styles = StyleSheet.create({});

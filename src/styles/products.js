@@ -10,10 +10,10 @@ const productStyle = StyleSheet.create({
     alignItems: "stretch",
   },
   containerProduct: {
-    width: "46%",
+    width: "47%",
     paddingLeft: 0,
     paddingRight: 0,
-    margin: 8,
+    margin: 4,
     shadowColor: "transparent",
     borderColor: "transparent",
     borderRadius: 20,

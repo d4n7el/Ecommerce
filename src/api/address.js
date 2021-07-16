@@ -5,8 +5,11 @@ import {
   deleteRequestApi,
 } from "./base";
 
-export const addressesApi = async (token, id) => {
-  const response = await getRequestApi(`/addresses?user=${id}`, { token });
+export const addressesApi = async (token, id, limit) => {
+  const paramsLimit = limit ? `&_limit=${limit}` : "";
+  const response = await getRequestApi(`/addresses?user=${id}${paramsLimit}`, {
+    token,
+  });
   return response;
 };
 
