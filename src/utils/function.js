@@ -8,19 +8,34 @@ export const validateResponse = async (response) => {
   if (response) {
     if (response.status && response.status >= 200 && response.status <= 204) {
       if (response.data) {
-        if (response.data.length > 0) {
+        if (response.data.length && response.data.length > 0) {
           return {
             status: response.status,
             message: "ok",
             process: true,
             rows: response.data.length,
           };
-        } else {
+        } else if (typeof response.data === "object") {
+          return {
+            status: response.status,
+            message: response,
+            process: true,
+            flag: 1,
+            rows: 0,
+          };
+        } else if (response.data.length && response.data.length === 0) {
           return {
             status: response.status,
             message: "no records",
             process: true,
-            flag: 1,
+            rows: response.data.length,
+          };
+        } else {
+          return {
+            status: response.status,
+            message: response,
+            process: false,
+            flag: 2,
             rows: 0,
           };
         }

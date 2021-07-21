@@ -22,6 +22,7 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-input-credit-card": "^0.5.5",
     "react-native-keyboard-aware-scroll-view": "^0.9.4",
     "react-native-paper": "^4.9.2",
     "react-native-reanimated": "^2.2.0",
@@ -30,6 +31,7 @@
     "react-native-screens": "^3.4.0",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
+    "stripe-client": "^1.1.5",
     "yup": "^0.32.9"
   },
   "devDependencies": {

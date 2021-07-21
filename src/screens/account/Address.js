@@ -16,7 +16,7 @@ import AddressList from "../../components/address/AddressList";
 
 const Address = () => {
   const [listAddress, setListAddress] = useState(null);
-  navigation = useNavigation();
+  const navigation = useNavigation();
   const {
     logOut,
     auth: { token, id },
@@ -46,7 +46,7 @@ const Address = () => {
           }}
         >
           <View style={[addressStyle.addAddress]}>
-            <Text style={addressStyle.addressTex}>Añadir Direcciòn</Text>
+            <Text style={addressStyle.addressTex}>Añadir Dirección</Text>
             <IconButton icon="arrow-right" color="#000" size={19} />
           </View>
         </TouchableWithoutFeedback>

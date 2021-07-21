@@ -48,7 +48,7 @@ const SelectAddress = ({
 
   return (
     <View style={addressStyle.containerList}>
-      <Text style={addressStyle.titleSelect}>Selecciona tu direccion</Text>
+      <Text style={addressStyle.titleSelect}>Selecciona tu dirección</Text>
       <View style={[layoutStyle.container]}>
         {addresses &&
           addresses.map((element) => {
@@ -120,14 +120,17 @@ const SelectAddress = ({
               </TouchableWithoutFeedback>
             );
           })}
-        {addresses && addresses.length === 0 && (
+        {addresses && (
           <Button
-            icon="sort-variant"
+            icon="plus"
             mode="contained"
             style={[layoutStyle.buttonContained, layoutStyle.button]}
-            onPress={() => navigation.navigate("addAddress")}
+            onPress={() => {
+              navigation.navigate("addAddress");
+              setLimit(1);
+            }}
           >
-            Ingresa una nueva direccion
+            Ingresa una nueva dirección
           </Button>
         )}
         {limit === 1 && addresses && addresses.length > 0 && (

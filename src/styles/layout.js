@@ -46,6 +46,10 @@ const layoutStyle = StyleSheet.create({
     alignItems: "baseline",
     justifyContent: "space-between",
   },
+  alignItemsEnd: {
+    flex: 1,
+    alignItems: "flex-end",
+  },
   centerInLine: {
     flex: 1,
     flexDirection: "row",

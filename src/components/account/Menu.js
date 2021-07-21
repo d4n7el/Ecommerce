@@ -35,17 +35,27 @@ const Menu = () => {
             navigation.navigate("address");
           }}
         ></List.Item>
+      </List.Section>
+      <List.Section>
+        <List.Subheader>App</List.Subheader>
         <List.Item
-          title="Cart"
-          description="View to Cart"
+          title="Metodos de pago"
+          description="Administra tus metodos de pago"
+          left={(props) => (
+            <List.Icon {...props} icon="credit-card-check-outline" />
+          )}
+          onPress={() => {
+            navigation.navigate("payment_methods");
+          }}
+        ></List.Item>
+        <List.Item
+          title="Carrito de compras"
+          description="lista de productos en tu carrito de compras"
           left={(props) => <List.Icon {...props} icon="cart-outline" />}
           onPress={() => {
             navigation.navigate("cart");
           }}
         ></List.Item>
-      </List.Section>
-      <List.Section>
-        <List.Subheader>App</List.Subheader>
         <List.Item
           title="Pedidos"
           description="Administra tu lista de pedidos"

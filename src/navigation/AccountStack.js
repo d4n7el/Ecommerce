@@ -7,6 +7,8 @@ import colors from "../styles/colors";
 import Address from "../screens/account/Address";
 import AddAddress from "../screens/account/AddAddress";
 import Cart from "../screens/account/Cart";
+import PaymentMethods from "../screens/account/PaymentMethods";
+import NewPaymentMethods from "../components/paymentMethods/new";
 
 const Stack = createStackNavigator();
 
@@ -37,17 +39,27 @@ const AccountStack = () => {
       <Stack.Screen
         name="address"
         component={Address}
-        options={{ title: "Manage addresses" }}
+        options={{ title: "Direcciones" }}
       />
       <Stack.Screen
         name="addAddress"
         component={AddAddress}
-        options={{ title: "Manage addresses" }}
+        options={{ title: "Direcciones" }}
       />
       <Stack.Screen
         name="cart"
         component={Cart}
-        options={{ title: "Manage cart", headerShown: false }}
+        options={{ title: "Carrito de compras", headerShown: false }}
+      />
+      <Stack.Screen
+        name="payment_methods"
+        component={PaymentMethods}
+        options={{ title: "Metodos de pago", headerShown: false }}
+      />
+      <Stack.Screen
+        name="New_payment_methods"
+        component={NewPaymentMethods}
+        options={{ title: "añadir metodo de pago", headerShown: false }}
       />
     </Stack.Navigator>
   );
