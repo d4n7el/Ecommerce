@@ -14,9 +14,7 @@ const NewPaymentMethods = () => {
   const [dataCard, setDataCard] = useState(null);
   const [infoTokenStripe, setInfoTokenStripe] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const navigation = useNavigation();
-
   const { auth } = UseLogin();
 
   const additionalInputsProps = {
@@ -34,9 +32,12 @@ const NewPaymentMethods = () => {
   const addCard = async () => {
     setLoading(true);
     const {
-      card: { last4, name, brand },
+      card: { last4, name, brand, exp_month, exp_year },
       id,
     } = infoTokenStripe;
+
+    console.log({ infoTokenStripe });
+
     const response = await newPaymentMethodApy(
       {
         last4,
@@ -44,6 +45,8 @@ const NewPaymentMethods = () => {
         brand,
         token_stripe: id,
         user: auth.id,
+        exp_month,
+        exp_year,
       },
       auth.token
     );

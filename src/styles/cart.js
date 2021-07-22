@@ -108,4 +108,20 @@ export const listCartstyle = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: colors.light,
   },
+  linkNewMethod: {
+    position: "absolute",
+    right: 20,
+    shadowColor: colors.dark,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    elevation: 19,
+    shadowOpacity: 0.2,
+  },
+  stateCard: {
+    position: "absolute",
+    right: 10,
+    top: 10,
+  },
 });

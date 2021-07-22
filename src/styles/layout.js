@@ -63,6 +63,15 @@ const layoutStyle = StyleSheet.create({
   bgOrange: {
     backgroundColor: "orange",
   },
+  bgSecondary: {
+    backgroundColor: colors.secondary,
+  },
+  bgPrimary: {
+    backgroundColor: colors.primary,
+  },
+  bgAplication: {
+    backgroundColor: colors.applicationBackground,
+  },
   widthAll: {
     flex: 1,
     width: "100%",
@@ -127,6 +136,9 @@ const layoutStyle = StyleSheet.create({
     marginBottom: 10,
   },
   hidden: {
+    display: "none",
+  },
+  displayNone: {
     display: "none",
   },
 });
