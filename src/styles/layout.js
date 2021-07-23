@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 import colors from "./colors";
 
 const layoutStyle = StyleSheet.create({
+  content1: {
+    flex: 1,
+    width: "100%",
+  },
   containerPrimary: {
     flex: 1,
     alignItems: "center",
@@ -131,15 +135,19 @@ const layoutStyle = StyleSheet.create({
     marginRight: 5,
   },
   title: {
-    color: colors.fourth,
-    fontSize: 16,
-    marginBottom: 10,
+    color: colors.primary,
+    fontSize: 19,
+    marginTop: 8,
+    textAlign: "center",
   },
   hidden: {
     display: "none",
   },
   displayNone: {
     display: "none",
+  },
+  bold: {
+    fontWeight: "bold",
   },
 });
 

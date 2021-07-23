@@ -5,12 +5,20 @@ import {
   deleteRequestApi,
 } from "./base";
 
-export const getPaymentMethodsApy = async (token, idUser, active = null) => {
+export const getPaymentMethodsApy = async (
+  token,
+  idUser,
+  active = null,
+  limit
+) => {
   const paramActive = active !== null ? `&active=${active ? 1 : 0}` : ``;
-  console.log(`/payment-methods?user=${idUser}${paramActive}`);
-  const response = await getRequestApi(`/payment-methods?user=${idUser}`, {
-    token,
-  });
+  const paramLimit = limit ? `&_limit=${limit}` : ``;
+  const response = await getRequestApi(
+    `/payment-methods?user=${idUser}${paramLimit}`,
+    {
+      token,
+    }
+  );
   return response;
 };
 

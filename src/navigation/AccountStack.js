@@ -57,7 +57,7 @@ const AccountStack = () => {
         options={{ title: "Metodos de pago", headerShown: false }}
       />
       <Stack.Screen
-        name="New_payment_methods"
+        name="new_payment_methods"
         component={NewPaymentMethods}
         options={{ title: "añadir metodo de pago", headerShown: false }}
       />

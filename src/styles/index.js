@@ -8,6 +8,7 @@ import { theme } from "./theme";
 import productStyle from "./products";
 import backgroundImage from "./backgroundImage";
 import { listCartstyle } from "./cart";
+import { cardStyle } from "./card";
 
 export {
   layoutStyle,
@@ -20,4 +21,5 @@ export {
   productStyle,
   backgroundImage,
   listCartstyle,
+  cardStyle,
 };

@@ -6,7 +6,6 @@ import { Switch } from "react-native-paper";
 import colors from "../../styles/colors";
 
 const CardViewCustom = ({ card }) => {
-  console.log(card);
   const [isSwitchOn, setIsSwitchOn] = useState(
     card.active === 1 ? true : false
   );

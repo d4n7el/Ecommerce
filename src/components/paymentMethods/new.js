@@ -9,6 +9,7 @@ import { validateResponse } from "../../utils/function";
 import { PUBLIC_KEY_STRIPE } from "../../utils/secret";
 const stripe = require("stripe-client")(PUBLIC_KEY_STRIPE);
 import { layoutStyle } from "../../styles";
+import Toast from "react-native-root-toast";
 
 const NewPaymentMethods = () => {
   const [dataCard, setDataCard] = useState(null);
@@ -36,8 +37,6 @@ const NewPaymentMethods = () => {
       id,
     } = infoTokenStripe;
 
-    console.log({ infoTokenStripe });
-
     const response = await newPaymentMethodApy(
       {
         last4,
@@ -58,7 +57,7 @@ const NewPaymentMethods = () => {
   };
 
   const getTokencard = async () => {
-    const { cvc, expiry, number, type, name } = dataCard.values;
+    const { cvc, expiry, number, name } = dataCard.values;
     const response = await stripe.createToken({
       card: {
         number,
@@ -68,7 +67,13 @@ const NewPaymentMethods = () => {
         name,
       },
     });
-    setInfoTokenStripe(response);
+    if (response.error) {
+      Toast.show(response.error.message, {
+        position: Toast.positions.CENTER,
+      });
+    } else {
+      setInfoTokenStripe(response);
+    }
   };
 
   return (
@@ -85,7 +90,7 @@ const NewPaymentMethods = () => {
             requiresName={true}
           />
         </View>
-        {dataCard && dataCard.valid && (
+        {dataCard && dataCard.valid && infoTokenStripe && (
           <View style={layoutStyle.padding40}>
             <Button
               loading={loading}

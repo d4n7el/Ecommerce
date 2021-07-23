@@ -6,15 +6,17 @@ import { productsForIdApi } from "../../api/products";
 import { validateResponse } from "../../utils/function";
 import { layoutStyle } from "../../styles";
 import ViewItemCart from "./ViewItemCart";
-import ResumeCart from "./ResumeCart";
 import { listCartstyle } from "../../styles";
 import { deleteCartStorage, updateCartStorage } from "../../api/cart";
 import SelectAddress from "../address/SelectAddress";
+import SelectCard from "../paymentMethods/Select";
 
 const ListCart = ({ heightResume, setSubTotal, setDiscount, setTotal }) => {
   const [products, setProducts] = useState(null);
   const [currentAddress, setCurrentAddress] = useState(null);
+  const [currentCard, setCurrentCard] = useState(null);
   const [limit, setLimit] = useState(1);
+  const [limitCard, setLimitCard] = useState(1);
 
   useFocusEffect(
     useCallback(() => {
@@ -102,6 +104,13 @@ const ListCart = ({ heightResume, setSubTotal, setDiscount, setTotal }) => {
             setCurrentAddress={setCurrentAddress}
             limit={limit}
             setLimit={setLimit}
+          />
+
+          <SelectCard
+            currentCard={currentCard}
+            setCurrentCard={setCurrentCard}
+            limit={limitCard}
+            setLimit={setLimitCard}
           />
         </>
       )}

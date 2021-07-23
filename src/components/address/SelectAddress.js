@@ -54,6 +54,7 @@ const SelectAddress = ({
           addresses.map((element) => {
             return (
               <TouchableWithoutFeedback
+                key={element._id}
                 onPress={() => {
                   setCurrentAddress(element._id);
                   setOnlySelected(element._id);
