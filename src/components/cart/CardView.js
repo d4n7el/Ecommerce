@@ -14,12 +14,12 @@ const CardViewCustom = ({ card }) => {
       <CardView
         style={[{ width: "100%" }]}
         key={card._id}
-        name={card.name}
-        number={card.last4}
+        name={card.billing_details.name}
+        number={card.card.last4}
         scale={1}
         expiry={`${
-          card.exp_month < 10 ? "0" + card.exp_month : card.exp_month
-        }/${card.exp_year.toString().substring(2)}`}
+          card.card.exp_month < 10 ? "0" + card.card.exp_month : card.exp_month
+        }/${card.card.exp_year.toString().substring(2)}`}
         inputStyle={layoutStyle.displayNone}
         labelStyle={layoutStyle.displayNone}
         inputContainerStyle={layoutStyle.displayNone}
@@ -35,7 +35,7 @@ const CardViewCustom = ({ card }) => {
       </View>
 
       <Text style={[listCartstyle.description, layoutStyle.padding5]}>
-        Mis transacciones {card.last4}
+        Mis transacciones {card.card.last4}
       </Text>
     </View>
   );

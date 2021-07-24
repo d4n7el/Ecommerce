@@ -10,13 +10,26 @@ import { listCartstyle } from "../../styles";
 import { deleteCartStorage, updateCartStorage } from "../../api/cart";
 import SelectAddress from "../address/SelectAddress";
 import SelectCard from "../paymentMethods/Select";
+import { Button } from "react-native-paper";
+import { createOrderApy } from "../../api/order";
+import { UseLogin } from "../../context/login";
 
-const ListCart = ({ heightResume, setSubTotal, setDiscount, setTotal }) => {
+const ListCart = ({
+  heightResume,
+  setSubTotal,
+  setDiscount,
+  setTotal,
+  total,
+}) => {
   const [products, setProducts] = useState(null);
   const [currentAddress, setCurrentAddress] = useState(null);
   const [currentCard, setCurrentCard] = useState(null);
   const [limit, setLimit] = useState(1);
   const [limitCard, setLimitCard] = useState(1);
+
+  const {
+    auth: { token, id },
+  } = UseLogin();
 
   useFocusEffect(
     useCallback(() => {
@@ -51,7 +64,6 @@ const ListCart = ({ heightResume, setSubTotal, setDiscount, setTotal }) => {
 
   const removeProduct = async (idProduct) => {
     const response = await deleteCartStorage(idProduct);
-
     setProducts(products.filter((p) => p._id !== idProduct));
   };
 
@@ -83,6 +95,17 @@ const ListCart = ({ heightResume, setSubTotal, setDiscount, setTotal }) => {
     setProducts(copyProducts);
   };
 
+  const addOrderNew = async () => {
+    const response = await createOrderApy(
+      token,
+      id,
+      currentCard,
+      products,
+      currentAddress,
+      total
+    );
+  };
+
   return (
     <View
       style={[
@@ -112,6 +135,16 @@ const ListCart = ({ heightResume, setSubTotal, setDiscount, setTotal }) => {
             limit={limitCard}
             setLimit={setLimitCard}
           />
+          <Button
+            icon="send"
+            mode="contained"
+            style={[layoutStyle.buttonSuccess, layoutStyle.button]}
+            onPress={() => {
+              addOrderNew();
+            }}
+          >
+            pagar
+          </Button>
         </>
       )}
     </View>

@@ -32,7 +32,7 @@ const SelectAddress = ({
         setAddresses(rows > 0 ? response.data : []);
         setOnlySelected(null);
         limit === 1
-          ? setCurrentAddress(rows > 0 ? response.data[0]._id : null)
+          ? setCurrentAddress(rows > 0 ? response.data[0] : null)
           : setCurrentAddress(null);
       }
     }
@@ -56,13 +56,13 @@ const SelectAddress = ({
               <TouchableWithoutFeedback
                 key={element._id}
                 onPress={() => {
-                  setCurrentAddress(element._id);
+                  setCurrentAddress(element);
                   setOnlySelected(element._id);
                 }}
               >
                 <View
                   style={[
-                    currentAddress === element._id
+                    currentAddress && currentAddress._id === element._id
                       ? addressStyle.itemListSelected
                       : addressStyle.itemList,
                   ]}
@@ -99,7 +99,7 @@ const SelectAddress = ({
                     <View>
                       <Text
                         style={
-                          currentAddress === element._id
+                          currentAddress && currentAddress._id === element._id
                             ? addressStyle.textInfoAddressSelected
                             : addressStyle.textInfoAddress
                         }
@@ -108,7 +108,7 @@ const SelectAddress = ({
                       </Text>
                       <Text
                         style={
-                          currentAddress === element._id
+                          currentAddress && currentAddress._id === element._id
                             ? addressStyle.textInfoAddressSelected
                             : addressStyle.textInfoAddress
                         }

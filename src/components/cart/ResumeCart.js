@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import { layoutStyle } from "../../styles";
 import { listCartstyle } from "../../styles";
 
-const ResumeCart = ({ subTotal, discount, setHeightResume }) => {
+const ResumeCart = ({ subTotal, discount, setHeightResume, total }) => {
   return (
     <View
       style={[layoutStyle.containerPrimary, listCartstyle.containerResume]}
@@ -28,7 +28,7 @@ const ResumeCart = ({ subTotal, discount, setHeightResume }) => {
           style={[layoutStyle.centerInLineBetWeenBase, listCartstyle.totals]}
         >
           <Text style={listCartstyle.price}>Total </Text>
-          <Text style={listCartstyle.priceTotal}> {subTotal - discount} </Text>
+          <Text style={listCartstyle.priceTotal}> {total} </Text>
         </View>
       </View>
     </View>

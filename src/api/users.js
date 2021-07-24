@@ -1,6 +1,8 @@
 import { postRequestApi, getRequestApi, putRequestApi } from "./base";
 
 export const registerApi = async (formData) => {
+  const customerStrapi = await postRequestApi("/strapi-customers", formData);
+  formData.strapi_customer = customerStrapi.data.userStripeLocal.id;
   const response = await postRequestApi("/auth/local/register", formData);
   return response;
 };

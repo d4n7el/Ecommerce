@@ -31,10 +31,9 @@ const PaymentMethodsView = () => {
 
   const getCards = async () => {
     const response = await getPaymentMethodsApy(token, id, false);
-
     const { process, rows } = await validateResponse(response);
-    if (process && rows > 0) {
-      setDataCards(mapCardsView(response.data));
+    if (process) {
+      setDataCards(mapCardsView(response.data.data));
     }
   };
 

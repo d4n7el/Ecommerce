@@ -12,9 +12,9 @@ export const getPaymentMethodsApy = async (
   limit
 ) => {
   const paramActive = active !== null ? `&active=${active ? 1 : 0}` : ``;
-  const paramLimit = limit ? `&_limit=${limit}` : ``;
+  const paramLimit = limit ? `?_limit=${limit}` : ``;
   const response = await getRequestApi(
-    `/payment-methods?user=${idUser}${paramLimit}`,
+    `/payment-methods/${idUser}${paramLimit}`,
     {
       token,
     }

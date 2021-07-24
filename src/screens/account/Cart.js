@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView, SafeAreaView } from "react-native";
 import ListCart from "../../components/cart/ListCart";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -10,6 +10,12 @@ const Cart = () => {
   const [discount, setDiscount] = useState(0);
   const [total, setTotal] = useState(0);
 
+  useEffect(() => {
+    if (subTotal && discount) {
+      setTotal(subTotal - discount);
+    }
+  }, [subTotal, discount]);
+
   return (
     <>
       <SafeAreaView />
@@ -18,6 +24,7 @@ const Cart = () => {
           subTotal={subTotal}
           discount={discount}
           setHeightResume={setHeightResume}
+          total={total}
         />
 
         <KeyboardAwareScrollView>
@@ -27,6 +34,7 @@ const Cart = () => {
               setSubTotal={setSubTotal}
               setDiscount={setDiscount}
               setTotal={setTotal}
+              total={total}
             />
           </ScrollView>
         </KeyboardAwareScrollView>

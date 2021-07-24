@@ -32,9 +32,10 @@ const SelectCard = ({ currentCard, setCurrentCard, setLimit, limit }) => {
 
   const getCards = async () => {
     const response = await getPaymentMethodsApy(token, id, false, limit);
-    const { process, rows } = await validateResponse(response);
-    if (process && rows > 0) {
-      setDataCards(response.data);
+
+    const { process } = await validateResponse(response);
+    if (process) {
+      setDataCards(response.data.data);
     }
   };
 
@@ -45,16 +46,16 @@ const SelectCard = ({ currentCard, setCurrentCard, setLimit, limit }) => {
       </Text>
       {dataCards &&
         dataCards.map((card) => {
-          const nameFile = `${card.brand.toLowerCase().replace(" ", "")}`;
+          const nameFile = `${card.card.brand.toLowerCase().replace(" ", "")}`;
           return (
             <TouchableWithoutFeedback
-              key={card._id}
-              onPress={() => setCurrentCard(card.token_stripe)}
+              key={card.id}
+              onPress={() => setCurrentCard(card)}
             >
               <View
                 style={[
                   layoutStyle.container,
-                  currentCard === card.token_stripe
+                  currentCard && currentCard.created === card.created
                     ? cardStyle.itemCardSelectSelected
                     : cardStyle.itemCardSelect,
                   layoutStyle.centerInLine,
@@ -75,23 +76,23 @@ const SelectCard = ({ currentCard, setCurrentCard, setLimit, limit }) => {
                 >
                   <Text
                     style={[
-                      currentCard === card.token_stripe
+                      currentCard && currentCard.created === card.created
                         ? cardStyle.textInfoSelected
                         : cardStyle.textInfo,
 
                       layoutStyle.bold,
                     ]}
                   >
-                    {card.last4}
+                    {card.card.last4}
                   </Text>
                   <Text
                     style={
-                      currentCard === card.token_stripe
+                      currentCard && currentCard.created === card.created
                         ? cardStyle.textInfoSelected
                         : cardStyle.textInfo
                     }
                   >
-                    {card.name}
+                    {card.billing_details.name}
                   </Text>
                 </View>
               </View>
