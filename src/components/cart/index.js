@@ -3,11 +3,16 @@ import { View, Text, TouchableWithoutFeedback } from "react-native";
 import { layoutStyle } from "../../styles";
 import colors from "../../styles/colors";
 import { Avatar } from "react-native-paper";
-import { updateCartStorage } from "../../api/cart";
+import { updateCartStorageProducts } from "../../api/cart";
+import { UseLogin } from "../../context/login";
 
 const ShoppingCart = ({ idProduct }) => {
+  const {
+    auth: { token, id },
+  } = UseLogin();
+
   const addCart = (idProduct) => {
-    const response = updateCartStorage(idProduct);
+    const response = updateCartStorageProducts(id, idProduct);
   };
 
   return (

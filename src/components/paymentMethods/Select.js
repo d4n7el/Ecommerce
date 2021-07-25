@@ -35,7 +35,7 @@ const SelectCard = ({ currentCard, setCurrentCard, setLimit, limit }) => {
 
     const { process } = await validateResponse(response);
     if (process) {
-      setDataCards(response.data.data);
+      setDataCards(response.data.paymentMethods.data);
     }
   };
 

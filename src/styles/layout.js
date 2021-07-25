@@ -101,7 +101,9 @@ const layoutStyle = StyleSheet.create({
   },
   buttonOutlined: {
     backgroundColor: "transparent",
-    borderColor: colors.primary,
+    borderColor: colors.light,
+    borderWidth: 1,
+    shadowOpacity: 0,
   },
   buttonIconTransparent: {
     maxWidth: 10,

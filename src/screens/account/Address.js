@@ -13,6 +13,7 @@ import { UseLogin } from "../../context/login";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Button } from "react-native-paper";
 import AddressList from "../../components/address/AddressList";
+import colors from "../../styles/colors";
 
 const Address = () => {
   const [listAddress, setListAddress] = useState(null);
@@ -51,20 +52,20 @@ const Address = () => {
           </View>
         </TouchableWithoutFeedback>
       </View>
-      <View>
+      <View style={layoutStyle.padding20}>
         {!listAddress ? (
           <ActivityIndicator />
         ) : listAddress.length === 0 ? (
           <Button
             mode="outlined"
             icon="plus"
-            style={layoutStyle.buttonSuccess}
-            color={"white"}
+            style={[layoutStyle.buttonWarning]}
+            color={colors.warning}
             onPress={() => {
               navigation.navigate("addAddress");
             }}
           >
-            Añadir Primer Direcciòn
+            Añadir Primer Dirección
           </Button>
         ) : (
           <AddressList addresses={listAddress} />

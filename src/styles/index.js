@@ -9,6 +9,7 @@ import productStyle from "./products";
 import backgroundImage from "./backgroundImage";
 import { listCartstyle } from "./cart";
 import { cardStyle } from "./card";
+import messageStyle from "./message";
 
 export {
   layoutStyle,
@@ -22,4 +23,5 @@ export {
   backgroundImage,
   listCartstyle,
   cardStyle,
+  messageStyle,
 };

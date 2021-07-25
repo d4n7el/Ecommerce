@@ -4,7 +4,7 @@ import { layoutStyle } from "../../styles";
 import { listCartstyle } from "../../styles";
 
 const ResumeCart = ({ subTotal, discount, setHeightResume, total }) => {
-  return (
+  return total > 0 ? (
     <View
       style={[layoutStyle.containerPrimary, listCartstyle.containerResume]}
       onLayout={(e) => {
@@ -32,7 +32,7 @@ const ResumeCart = ({ subTotal, discount, setHeightResume, total }) => {
         </View>
       </View>
     </View>
-  );
+  ) : null;
 };
 
 export default ResumeCart;

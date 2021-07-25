@@ -76,6 +76,7 @@ export const listCartstyle = StyleSheet.create({
     position: "absolute",
     right: 20,
     top: 15,
+    zIndex: 1,
   },
   plus: {
     position: "absolute",

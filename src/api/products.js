@@ -32,3 +32,8 @@ export const productsForIdApi = async (id) => {
   const response = await getRequestApi(`/products?_id=${id}`, {});
   return response;
 };
+
+export const productsInApi = async (ids) => {
+  const response = await postRequestApi("/productsIn", { ids: ids });
+  return response;
+};

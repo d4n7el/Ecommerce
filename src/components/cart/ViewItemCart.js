@@ -22,7 +22,7 @@ const ViewItemCart = ({ products, removeProduct, editQuantity }) => {
             ></ImageBackground>
           </View>
           <View style={listCartstyle.conatinerData}>
-            <Text style={listCartstyle.iconRemove}>
+            <Text style={[listCartstyle.iconRemove]}>
               <AwesomeIcon
                 name={"trash"}
                 size={20}
