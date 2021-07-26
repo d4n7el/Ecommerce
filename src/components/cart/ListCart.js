@@ -17,6 +17,8 @@ import { Button } from "react-native-paper";
 import { createOrderApy } from "../../api/order";
 import { UseLogin } from "../../context/login";
 import { productsInApi } from "../../api/products";
+import { mapProductsNewOrder } from "../../utils/mapProducts";
+import { mapAddressNewOrder } from "../../utils/mapAddress";
 
 const ListCart = ({
   heightResume,
@@ -114,8 +116,8 @@ const ListCart = ({
       token,
       id,
       currentCard,
-      products,
-      currentAddress,
+      mapProductsNewOrder(products),
+      mapAddressNewOrder(currentAddress),
       total
     );
     setLoading(false);
