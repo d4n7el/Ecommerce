@@ -60,7 +60,7 @@ const Menu = () => {
           title="Pedidos"
           description="Administra tu lista de pedidos"
           left={(props) => <List.Icon {...props} icon="clipboard-list" />}
-          onPress={() => {}}
+          onPress={() => navigation.navigate("orders")}
         ></List.Item>
         <List.Item
           title="Favoritos"

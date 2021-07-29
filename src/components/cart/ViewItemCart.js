@@ -1,10 +1,10 @@
-import React from "react";
-import { View, Text, ImageBackground } from "react-native";
-import { layoutStyle, backgroundImage } from "../../styles";
-import { BASE_URL_API } from "../../utils/const";
-import { listCartstyle } from "../../styles";
-import AwesomeIcon from "react-native-vector-icons/FontAwesome";
-import colors from "../../styles/colors";
+import React from 'react';
+import { View, Text, ImageBackground } from 'react-native';
+import { layoutStyle, backgroundImage } from '../../styles';
+import { BASE_URL_API } from '../../utils/const';
+import { listCartstyle } from '../../styles';
+import AwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import colors from '../../styles/colors';
 
 const ViewItemCart = ({ products, removeProduct, editQuantity }) => {
   return (
@@ -17,14 +17,14 @@ const ViewItemCart = ({ products, removeProduct, editQuantity }) => {
               source={{
                 uri: `${BASE_URL_API}${product.image.url}`,
               }}
-              resizeMode="contain"
+              resizeMode='contain'
               style={backgroundImage.image}
             ></ImageBackground>
           </View>
           <View style={listCartstyle.conatinerData}>
             <Text style={[listCartstyle.iconRemove]}>
               <AwesomeIcon
-                name={"trash"}
+                name={'trash'}
                 size={20}
                 color={colors.warning}
                 onPress={() => {
@@ -46,7 +46,7 @@ const ViewItemCart = ({ products, removeProduct, editQuantity }) => {
             {editQuantity && (
               <Text style={listCartstyle.plus}>
                 <AwesomeIcon
-                  name={"plus-square"}
+                  name={'plus-square'}
                   size={20}
                   color={colors.secondary}
                   onPress={() => {
@@ -59,7 +59,7 @@ const ViewItemCart = ({ products, removeProduct, editQuantity }) => {
             {editQuantity && (
               <Text style={listCartstyle.minus}>
                 <AwesomeIcon
-                  name={"minus-square"}
+                  name={'minus-square'}
                   size={20}
                   color={colors.warning}
                   onPress={() => {

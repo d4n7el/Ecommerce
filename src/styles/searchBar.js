@@ -1,5 +1,5 @@
-import { Dimensions, StyleSheet } from "react-native";
-import colors from "./colors";
+import { Dimensions, StyleSheet } from 'react-native';
+import colors from './colors';
 
 const searchBarStyle = StyleSheet.create({
   searchContainer: {
@@ -13,31 +13,30 @@ const searchBarStyle = StyleSheet.create({
   },
   safeAreaView: {
     flex: 0,
-    backgroundColor: colors.applicationBackground,
   },
   search: {
     borderRadius: 20,
     height: 47,
-    shadowColor: "transparent",
+    shadowColor: 'transparent',
   },
   backArrow: {
-    position: "absolute",
+    position: 'absolute',
     color: colors.primary,
     paddingVertical: 15,
     paddingHorizontal: 20,
     left: -20,
   },
   alignLeft: {
-    position: "relative",
-    alignItems: "flex-end",
+    position: 'relative',
+    alignItems: 'flex-end',
   },
   showHistory: {
-    position: "absolute",
+    position: 'absolute',
     left: 0,
     top: 0,
     backgroundColor: colors.applicationBackground,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
     paddingLeft: 40,
     paddingRight: 40,
     paddingTop: 20,

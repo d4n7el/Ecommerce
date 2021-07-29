@@ -1,16 +1,25 @@
-import React from "react";
-import { View, Text } from "react-native";
-import { StatusBar, SafeAreaView } from "react-native";
-import { searchBarStyle } from "../../styles";
-import colors from "../../styles/colors";
+import React from 'react';
+import { View, Text } from 'react-native';
+import { StatusBar, SafeAreaView } from 'react-native';
+import { searchBarStyle } from '../../styles';
+import colors from '../../styles/colors';
 
-const StatusBarCustom = () => {
+const StatusBarCustom = ({ bgcolorSafeAreaView, colorSafeAreaView }) => {
   return (
     <>
-      <SafeAreaView style={searchBarStyle.safeAreaView} />
+      <SafeAreaView
+        style={
+          (searchBarStyle.safeAreaView,
+          {
+            backgroundColor: bgcolorSafeAreaView
+              ? bgcolorSafeAreaView
+              : colors.applicationBackground,
+          })
+        }
+      />
       <StatusBar
         style={searchBarStyle.statusBarCustom}
-        barStyle="dark-content"
+        barStyle={colorSafeAreaView ? colorSafeAreaView : 'default'}
       />
     </>
   );

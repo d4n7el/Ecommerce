@@ -1,14 +1,15 @@
-import React, { useCallback, useState } from "react";
-import { View, ScrollView } from "react-native";
-import { layoutStyle, productStyle } from "../../styles";
-import StatusBarCustom from "../../components/statusBar/Index";
-import Search from "../../components/search/index";
-import { FavoritesMeApi } from "../../api/favorites";
-import { useFocusEffect } from "@react-navigation/native";
-import { UseLogin } from "../../context/login";
-import ViewProduct from "../../components/products/ViewProduct";
-import { deleteFavoriteApi } from "../../api/favorites";
-import { validateResponse } from "../../utils/function";
+import React, { useCallback, useState } from 'react';
+import { View, ScrollView } from 'react-native';
+import { layoutStyle, productStyle } from '../../styles';
+import StatusBarCustom from '../../components/statusBar/Index';
+import Search from '../../components/search/index';
+import { FavoritesMeApi } from '../../api/favorites';
+import { useFocusEffect } from '@react-navigation/native';
+import { UseLogin } from '../../context/login';
+import ViewProduct from '../../components/products/ViewProduct';
+import { deleteFavoriteApi } from '../../api/favorites';
+import { validateResponse } from '../../utils/function';
+import colors from '../../styles/colors';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState(null);
@@ -49,7 +50,10 @@ const Favorites = () => {
 
   return (
     <>
-      <StatusBarCustom />
+      <StatusBarCustom
+        bgcolorSafeAreaView={colors.applicationBackground}
+        colorSafeAreaView="dark-content"
+      />
       <Search />
       <ScrollView style={layoutStyle.padding5}>
         <View style={[productStyle.container]}>

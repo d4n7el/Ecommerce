@@ -1,24 +1,27 @@
-import React, { useCallback, useState, useEffect } from "react";
-import { useFocusEffect } from "@react-navigation/native";
-import { View, Text } from "react-native";
-import { getCartStorageProducts } from "../../api/cart";
-import { productsForIdApi } from "../../api/products";
-import { validateResponse } from "../../utils/function";
-import { layoutStyle } from "../../styles";
-import ViewItemCart from "./ViewItemCart";
-import { listCartstyle } from "../../styles";
+import React, { useCallback, useState, useEffect } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import { View, Text } from 'react-native';
+import {
+  getCartStorageProducts,
+  deleteCartStorageProducts,
+} from '../../api/cart';
+import { productsForIdApi } from '../../api/products';
+import { validateResponse } from '../../utils/function';
+import { layoutStyle } from '../../styles';
+import ViewItemCart from './ViewItemCart';
+import { listCartstyle } from '../../styles';
 import {
   deleteCartStorageProduct,
   updateCartStorageProducts,
-} from "../../api/cart";
-import SelectAddress from "../address/SelectAddress";
-import SelectCard from "../paymentMethods/Select";
-import { Button } from "react-native-paper";
-import { createOrderApy } from "../../api/order";
-import { UseLogin } from "../../context/login";
-import { productsInApi } from "../../api/products";
-import { mapProductsNewOrder } from "../../utils/mapProducts";
-import { mapAddressNewOrder } from "../../utils/mapAddress";
+} from '../../api/cart';
+import SelectAddress from '../address/SelectAddress';
+import SelectCard from '../paymentMethods/Select';
+import { Button } from 'react-native-paper';
+import { createOrderApy } from '../../api/order';
+import { UseLogin } from '../../context/login';
+import { productsInApi } from '../../api/products';
+import { mapProductsNewOrder } from '../../utils/mapProducts';
+import { mapAddressNewOrder } from '../../utils/mapAddress';
 
 const ListCart = ({
   heightResume,
@@ -41,6 +44,9 @@ const ListCart = ({
   useFocusEffect(
     useCallback(() => {
       (async () => {
+        setSubTotal(0);
+        setDiscount(0);
+        setTotal(0);
         setProducts([]);
         getCart();
       })();
@@ -120,6 +126,12 @@ const ListCart = ({
       mapAddressNewOrder(currentAddress),
       total
     );
+    const { process } = await validateResponse(response);
+
+    if (process) {
+      await deleteCartStorageProducts(id);
+      getCart();
+    }
     setLoading(false);
   };
   return products && products.length > 0 ? (

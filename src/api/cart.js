@@ -1,6 +1,6 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ITEM_CART_STORAGE } from "../utils/const";
-import { sortDataForDate } from "../utils/function";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ITEM_CART_STORAGE } from '../utils/const';
+import { sortDataForDate } from '../utils/function';
 
 export const getCartStorageProducts = async (idUser) => {
   let stringcart = await AsyncStorage.getItem(idUser);
@@ -44,6 +44,13 @@ export const updateCartStorageProducts = async (
 export const deleteCartStorageProduct = async (idUser, idProduct) => {
   let cart = await getCartStorageProducts(idUser);
   cart.products = cart.products.filter((p) => p.idProduct !== idProduct);
+
+  await AsyncStorage.setItem(idUser, JSON.stringify(cart));
+};
+
+export const deleteCartStorageProducts = async (idUser) => {
+  let cart = await getCartStorageProducts(idUser);
+  cart.products = [];
 
   await AsyncStorage.setItem(idUser, JSON.stringify(cart));
 };

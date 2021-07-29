@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { View } from "react-native";
-import { TextInput, Button } from "react-native-paper";
-import { layoutStyle, loginStyle } from "../../styles";
-import { useFormik } from "formik";
-import Toast from "react-native-root-toast";
-import * as Yup from "yup";
-import { registerApi } from "../../api/users";
-import colors from "../../styles/colors";
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
+import { layoutStyle, loginStyle } from '../../styles';
+import { useFormik } from 'formik';
+import Toast from 'react-native-root-toast';
+import * as Yup from 'yup';
+import { registerApi } from '../../api/users';
+import colors from '../../styles/colors';
 
 const RegisterForm = ({ setShowLogin }) => {
   const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ const RegisterForm = ({ setShowLogin }) => {
 
     setLoading(false);
     if (response && response.error) {
-      Toast.show("Se presento un error, intenta mas tarde!", {
+      Toast.show('Se presento un error, intenta mas tarde!', {
         position: Toast.positions.CENTER,
       });
     } else if (response.data) {
@@ -39,7 +39,7 @@ const RegisterForm = ({ setShowLogin }) => {
         style={[loginStyle.inputLogin, layoutStyle.input]}
         label="Email"
         onChangeText={(text) => {
-          formik.setFieldValue("email", text);
+          formik.setFieldValue('email', text);
         }}
         value={formik.values.email}
         error={formik.errors.email}
@@ -49,7 +49,7 @@ const RegisterForm = ({ setShowLogin }) => {
         underlineColor={colors.opaque}
         label="Nombre"
         onChangeText={(text) => {
-          formik.setFieldValue("username", text);
+          formik.setFieldValue('username', text);
         }}
         value={formik.values.username}
         error={formik.errors.username}
@@ -60,7 +60,7 @@ const RegisterForm = ({ setShowLogin }) => {
         secureTextEntry
         label="Contraseña"
         onChangeText={(text) => {
-          formik.setFieldValue("password", text);
+          formik.setFieldValue('password', text);
         }}
         value={formik.values.password}
         error={formik.errors.password}
@@ -70,7 +70,7 @@ const RegisterForm = ({ setShowLogin }) => {
         secureTextEntry
         label="Confirmar contraseña"
         onChangeText={(text) => {
-          formik.setFieldValue("repeatPassword", text);
+          formik.setFieldValue('repeatPassword', text);
         }}
         value={formik.values.repeatPassword}
         error={formik.errors.repeatPassword}
@@ -100,10 +100,10 @@ const RegisterForm = ({ setShowLogin }) => {
 export default RegisterForm;
 
 const initialValues = () => ({
-  email: "",
-  username: "",
-  password: "",
-  repeatPassword: "",
+  email: '',
+  username: '',
+  password: '',
+  repeatPassword: '',
 });
 
 const validationSchema = () => ({
@@ -112,5 +112,5 @@ const validationSchema = () => ({
   password: Yup.string().required(true),
   repeatPassword: Yup.string()
     .required(true)
-    .oneOf([Yup.ref("password")]),
+    .oneOf([Yup.ref('password')]),
 });

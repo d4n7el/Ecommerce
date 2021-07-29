@@ -3,7 +3,7 @@ import {
   getRequestApi,
   putRequestApi,
   deleteRequestApi,
-} from "./base";
+} from './base';
 
 export const createOrderApy = async (
   token,
@@ -14,9 +14,20 @@ export const createOrderApy = async (
   total
 ) => {
   const response = await postRequestApi(
-    "/orders/new",
+    '/orders/new',
     { idUser, currentCard, products, address, total },
     { token }
   );
+  return response;
+};
+
+export const getOrdersApi = async (token, limit = 20) => {
+  const paramLimit = limit ? `?_limit=${limit}` : ``;
+  const response = await getRequestApi(`/orders${paramLimit}`, { token });
+  return response;
+};
+
+export const getOrderApi = async (token, id) => {
+  const response = await getRequestApi(`/orders/${id}`, { token });
   return response;
 };

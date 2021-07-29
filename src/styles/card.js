@@ -1,9 +1,9 @@
-import colors from "./colors";
-import { StyleSheet } from "react-native";
+import colors from './colors';
+import { StyleSheet } from 'react-native';
 
 export const cardStyle = StyleSheet.create({
   linkNewMethod: {
-    position: "absolute",
+    position: 'absolute',
     right: 20,
     shadowColor: colors.dark,
     shadowOffset: {
@@ -14,7 +14,7 @@ export const cardStyle = StyleSheet.create({
     shadowOpacity: 0.2,
   },
   stateCard: {
-    position: "absolute",
+    position: 'absolute',
     right: 10,
     top: 10,
   },
@@ -33,10 +33,10 @@ export const cardStyle = StyleSheet.create({
     borderRadius: 4,
   },
   containerImg: {
-    width: "15%",
+    width: '15%',
   },
   infoSelectCard: {
-    width: "85%",
+    width: '85%',
   },
   textInfo: {
     color: colors.primary,
@@ -46,5 +46,15 @@ export const cardStyle = StyleSheet.create({
   },
   textInfoSelected: {
     color: colors.white,
+  },
+  imageCardSimple: {
+    width: 40,
+    height: 40,
+  },
+  viewcardSimple: {
+    backgroundColor: colors.white,
+    padding: 10,
+    marginTop: 20,
+    borderRadius: 10,
   },
 });
